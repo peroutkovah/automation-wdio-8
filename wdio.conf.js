@@ -2,12 +2,12 @@ export const config = {
     // automationProtocol: 'devtools',
     runner: 'local',
     specs: [
-        './test/specs/*.e2e.js'
+        './test/specs/*.e2e.js' //tady mu rikam, at jde do slozky test a hleda tam test, ktery se jmenuje *.e2e.js 
     ],
     exclude: [
         // './test/specs/examples/**/*.js'
     ],
-    suites: {
+    suites: { //tady hleda dalsi testy pro command npm run -- --suite <suite_name>
         exercise: ['./test/specs/exercise.e2e.js'],
         homework: ['./test/specs/homework/*.e2e.js'],
         lesson_01: ['./test/specs/examples/lesson-01/**/*.e2e.js'],
@@ -22,14 +22,14 @@ export const config = {
         lesson_11: ['./test/specs/examples/lesson-11/**/*.e2e.js']
     },
     maxInstances: 10,
-    capabilities: [{
+    capabilities: [{ //tady si definuju, jaky prohlizec si budu pouzivat
         maxInstances: 5,
-        browserName: 'chrome',
+        browserName: 'chorme',
         acceptInsecureCerts: true,
         'goog:chromeOptions': {
             args: [
                 '--window-size=1920,1080',
-                // '--headless',
+                 '--headless', //spusti se test v tichem modu, ale neukaze se mi to
                 '--no-sandbox',
                 '--disable-gpu',
                 '--disable-setuid-sandbox',
@@ -44,10 +44,10 @@ export const config = {
             ]
         }
     }],
-    logLevel: 'silent',
+    logLevel: 'silent', //tady muzu napsat info a vypise mi to veci dolu
     bail: 0,
     baseUrl: 'https://team8-2022brno.herokuapp.com',
-    waitforTimeout: 10000,
+    waitforTimeout: 10000, //cas o ktery ten prohlizec ceka
     connectionRetryTimeout: 120000,
     connectionRetryCount: 3,
     services: [
@@ -55,7 +55,7 @@ export const config = {
         'geckodriver'
     ],
     framework: 'mocha',
-    reporters: ['spec'],
+    reporters: ['spec'], //jiny zpusob reportovani vysledku
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
