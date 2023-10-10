@@ -24,7 +24,7 @@ export const config = {
     maxInstances: 10,
     capabilities: [{ //tady si definuju, jaky prohlizec si budu pouzivat
         maxInstances: 5,
-        browserName: 'chorme',
+        browserName: 'chrome',
         acceptInsecureCerts: true,
         'goog:chromeOptions': {
             args: [
