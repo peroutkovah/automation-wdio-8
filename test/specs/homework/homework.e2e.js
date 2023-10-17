@@ -1,11 +1,15 @@
 describe('Homework', async () => {
 
-    it('should open page and create screenshot', async () => {
+    it('should open page and create screenshot - HM 1', async () => {
 
         // sem vypracuj domácí úkol
         await browser.reloadSession();
         await browser.url('/registrace'); 
         await browser.saveScreenshot('./screenshots/homework1.png');
+
+    });
+
+    it('should select different elemnts in page - HM 2', async () => {
 
         // ●	Políčko pro jméno a příjmení
         console.log('Tady je Políčko pro jméno a příjmení');

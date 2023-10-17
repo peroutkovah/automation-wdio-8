@@ -22,7 +22,9 @@ describe('Czechitas Login Page', async () => {
     //     await browser.pause(5000); //tohle se mi otevre a zustane stat 5 vterin
     //     //console.log('Vypis neco')
 
+        });
 
+    it('should select different elements', async () => {
     // //cviceni1 - podle tagu
     //a.
      console.log('Tady je 1.a');
