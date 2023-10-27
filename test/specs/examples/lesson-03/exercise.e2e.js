@@ -35,7 +35,7 @@ describe('Login And Applications Page', async () => {
         await loginButton.click();
 
         // Vypiš jméno přihlášeného uživatele
-        const currentUser = $('.navbar-right').$('strong').getText()
+        const currentUser = $('.nav-item dropdown').$('strong').getText()
         console.log(await currentUser);
 
         // přechod na stránku s kurzy

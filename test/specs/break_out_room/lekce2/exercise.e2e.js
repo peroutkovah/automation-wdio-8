@@ -103,9 +103,9 @@ describe('Czechitas Login Page', async () => {
     });
  */
 
-     it('should interactate with web page - LEKCE 3', async () => {
+    it('should interactate with web page - LEKCE 3', async () => {
              //************** lekce 3 ***********
-    /* const buttons = await $$('button');
+    const buttons = await $$('button');
 
     buttons.forEach(async (button) => {
         console.log(await button.getHTML());  
@@ -114,7 +114,7 @@ describe('Czechitas Login Page', async () => {
     
     for await (const button of buttons) {
         console.log(await button.getHTML());
-    }  */
+    } 
 
     const emailField =await $('#email');
     const passwordField =await $('#password');
@@ -125,7 +125,7 @@ describe('Czechitas Login Page', async () => {
     console.log(await loginkButton.isDisplayed());
     console.log(await loginkButton.getText());
 //    console.log(await loginkButton.getAttribute());
-  /*   console.log(await forgotPasswordLink.getAttribute('href'));
+    console.log(await forgotPasswordLink.getAttribute('href'));
     console.log(await loginkButton.isExisting());
 
     await emailField.setValue('hanka.peroutkova@centrum.cz');
@@ -145,13 +145,15 @@ describe('Czechitas Login Page', async () => {
     await passwordField.clearValue();
     await passwordField.setValue(password);
 
-    await loginkButton.click(); */
+    await loginkButton.click();
+
+   
 
     //await browser.pause(2000);
 
-    }); 
+    });
 
-    
+
 
 });
 

@@ -19,7 +19,12 @@ export const config = {
         lesson_08: ['./test/specs/examples/lesson-08/**/*.e2e.js'],
         lesson_09: ['./test/specs/examples/lesson-09/**/*.e2e.js'],
         lesson_10: ['./test/specs/examples/lesson-10/**/*.e2e.js'],
-        lesson_11: ['./test/specs/examples/lesson-11/**/*.e2e.js']
+        lesson_11: ['./test/specs/examples/lesson-11/**/*.e2e.js'],
+
+        lekce1: ['./test/specs/break_out_room/lekce1/**/*.e2e.js'],
+        lekce2: ['./test/specs/break_out_room/lekce2/**/*.e2e.js'],
+        lekce3: ['./test/specs/break_out_room/lekce3/**/*.e2e.js']
+
     },
     maxInstances: 10,
     capabilities: [{ //tady si definuju, jaky prohlizec si budu pouzivat
@@ -29,7 +34,7 @@ export const config = {
         'goog:chromeOptions': {
             args: [
                 '--window-size=1920,1080',
-                 '--headless', //spusti se test v tichem modu, ale neukaze se mi to
+              //   '--headless', //spusti se test v tichem modu, ale neukaze se mi to
                 '--no-sandbox',
                 '--disable-gpu',
                 '--disable-setuid-sandbox',

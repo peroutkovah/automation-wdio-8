@@ -37,4 +37,15 @@ describe('Homework', async () => {
         console.log(btnRegistrace);
     });
 
+    it('should interate with page - HM 3', async () => {
+        
+        const fldJmenoPrijmeni = await  $('[name="name"][type="text"]').setValue('Poseroutkova');
+        const fldEmail = await  $('[name="email"][type="email"]').setValue('hanka.peroutkova@centrum.cz');
+        const fldHeslo = await  $('[name="password"][type="password"]').setValue('Eproutka1');
+        const fldHesloPotvrzeni = await  $('#password-confirm').setValue('Eproutka1');
+        const btnRegistrace = await  $('[type="submit"].btn').click();
+        await browser.pause(1000);
+    });  
+
+
 });
