@@ -4,7 +4,7 @@ import {username, password} from './fixtures.js'
 
 describe('Czechitas Login Page', async () => {
 //describe(nazev funkce, to co vykona)
-    it('should open login page - LEKCE 1', async () => {
+/*     it('should open login page - LEKCE 1', async () => {
         //tohle je anonymni lambda funkce
         //await znamena, ze je asynchronni - kdyby tam await, tak by mi vyjelo jen PROMISE
         await browser.reloadSession(); //otevre se nove okno prohlizec
@@ -22,7 +22,8 @@ describe('Czechitas Login Page', async () => {
     //     await browser.pause(5000); //tohle se mi otevre a zustane stat 5 vterin
     //     //console.log('Vypis neco')
 
-        });
+        }); */
+
 /*
     it('should select different elements - LEKCE 2', async () => {
     // //cviceni1 - podle tagu -najde to vzdy prvni vyskytujici se
@@ -102,10 +103,10 @@ describe('Czechitas Login Page', async () => {
 
     });
  */
-
+  /* 
      it('should interactate with web page - LEKCE 3', async () => {
              //************** lekce 3 ***********
-    /* const buttons = await $$('button');
+  const buttons = await $$('button');
 
     buttons.forEach(async (button) => {
         console.log(await button.getHTML());  
@@ -114,7 +115,7 @@ describe('Czechitas Login Page', async () => {
     
     for await (const button of buttons) {
         console.log(await button.getHTML());
-    }  */
+    } 
 
     const emailField =await $('#email');
     const passwordField =await $('#password');
@@ -124,8 +125,8 @@ describe('Czechitas Login Page', async () => {
     console.log(await loginkButton.isEnabled());
     console.log(await loginkButton.isDisplayed());
     console.log(await loginkButton.getText());
-//    console.log(await loginkButton.getAttribute());
-  /*   console.log(await forgotPasswordLink.getAttribute('href'));
+//    console.log(await loginkButton.getAttribute( ));
+     console.log(await forgotPasswordLink.getAttribute('href'));
     console.log(await loginkButton.isExisting());
 
     await emailField.setValue('hanka.peroutkova@centrum.cz');
@@ -145,13 +146,29 @@ describe('Czechitas Login Page', async () => {
     await passwordField.clearValue();
     await passwordField.setValue(password);
 
-    await loginkButton.click(); */
+    await loginkButton.click(); 
 
     //await browser.pause(2000);
 
     }); 
-
+*/
     
+
+
+    //describe(nazev funkce, to co vykona)
+        it('organizace testu - LEKCE 4', async () => {
+            
+            await browser.reloadSession(); //otevre se nove okno prohlizec
+            //otevre stranku prihlaseni
+            await browser.url('/prihlaseni'); //na tu base url doplni /prihlaseni'
+
+            const loginButton =await $('.btn-primary');
+
+            await loginButton.click(); 
+
+            await browser.pause(20000);
+
+        });
 
 });
 

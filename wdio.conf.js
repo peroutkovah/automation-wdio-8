@@ -23,7 +23,9 @@ export const config = {
 
         lekce1: ['./test/specs/break_out_room/lekce1/**/*.e2e.js'],
         lekce2: ['./test/specs/break_out_room/lekce2/**/*.e2e.js'],
-        lekce3: ['./test/specs/break_out_room/lekce3/**/*.e2e.js']
+        lekce3: ['./test/specs/break_out_room/lekce3/**/*.e2e.js'],
+        lekce4_oskliva: ['./test/specs/break_out_room/lekce4_oskliva/**/*.e2e.js'],
+        lekce4_hezka: ['./test/specs/break_out_room/lekce4_hezka/**/*.e2e.js'],
 
     },
     maxInstances: 10,
