@@ -26,6 +26,8 @@ export const config = {
         lekce3: ['./test/specs/break_out_room/lekce3/**/*.e2e.js'],
         lekce4_oskliva: ['./test/specs/break_out_room/lekce4_oskliva/**/*.e2e.js'],
         lekce4_hezka: ['./test/specs/break_out_room/lekce4_hezka/**/*.e2e.js'],
+        lekce5: ['./test/specs/break_out_room/lekce5/**/*.e2e.js'],
+
 
     },
     maxInstances: 10,
@@ -36,8 +38,9 @@ export const config = {
         'goog:chromeOptions': {
             args: [
                 '--window-size=1920,1080',
-              //   '--headless', //spusti se test v tichem modu, ale neukaze se mi to
-                '--no-sandbox',
+              //' --headless', //spusti se test v tichem modu, ale neukaze se mi to
+              ' --headless',   
+              '--no-sandbox',
                 '--disable-gpu',
                 '--disable-setuid-sandbox',
                 '--disable-dev-shm-usage',
