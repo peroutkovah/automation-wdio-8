@@ -11,6 +11,7 @@ describe('Czechitas Login Page', async () => {
     })
 
     //describe(nazev funkce, to co vykona)
+    
         it('zkontroluje, ze jsme na prihlasovaci strance', async () => {
             
             //3.	Zkontroluj, že uživatel nepříhlásil

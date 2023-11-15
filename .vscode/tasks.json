@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "wdio",
+			"problemMatcher": [],
+			"label": "npm: wdio",
+			"detail": "wdio run wdio.conf.js"
+		}
+	]
+}
