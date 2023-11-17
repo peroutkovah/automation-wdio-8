@@ -5,7 +5,7 @@ describe('Homework registration age', async () => {
         // sem vypracuj domácí úkol
         await browser.reloadSession();
         await browser.url('/registrace'); 
-        await browser.saveScreenshot('./screenshots/homework1.png');
+        await browser.saveScreenshot('.homework1.png');
 
     });
 
@@ -42,7 +42,7 @@ describe('Homework registration age', async () => {
         console.log(btnRegistraceIsEnabled);
     });
 
-    xit('should make valid registration and check it', async () => {       
+    it('should make valid registration and check it', async () => {       
         const fldJmenoPrijmeni = await  $('[name="name"][type="text"]');
         const fldEmail = await  $('[name="email"][type="email"]');
         const fldHeslo = await  $('[name="password"][type="password"]');
@@ -54,26 +54,19 @@ describe('Homework registration age', async () => {
          fldHeslo.setValue('Eproutka1');
          fldHesloPotvrzeni.setValue('Eproutka1');
 
+        await browser.pause(1000);
+        await $('#DataTables_Table_0_wrapper').waitForDisplayed({ reverse: true});
+
+
         console.log( await  btnRegistrace.isEnabled());
         await btnRegistrace.click();
-
-        /* const xpathButton = "//button[type='submit']";
-        $(xpathButton).click(); */
-         
-        //await browser.pause(500);
-
-         /* const toastMessage =await $('.toast-message');
-         await toastMessage.waitForExist();
-        const textNadpisuPoPrihlaseni = await $('h1=Přihlášky');
-        console.log('Nadpis stránky je:' + await textNadpisuPoPrihlaseni.getText()); 
-        console.log('pokus: ' + await $('.btn.btn-sm.btn-info').isEnabled());*/
         const prihlasenyUzivatel =$('.navbar-right').$('[title="Hana Poseroutkova"]');
 
            console.log('Jméno přihlášeného uživatele: ' + await prihlasenyUzivatel.getText());
     });  
 
 
-    it('should make invalid registration for already existing user', async () => {       
+    xit('should make invalid registration for already existing user', async () => {       
         const fldJmenoPrijmeni = await  $('[name="name"][type="text"]');
         const fldEmail = await  $('[name="email"][type="email"]');
         const fldHeslo = await  $('[name="password"][type="password"]');
@@ -94,8 +87,9 @@ describe('Homework registration age', async () => {
         invalidMSg.forEach(async (invalidMSg) => {
            console.log(await invalidMSg.getText());  
        }); 
+    }); 
 
-       it('should make invalid registration because of nonadequete psw', async () => {       
+    xit('should make invalid registration because of nonadequete psw', async () => {       
         const fldJmenoPrijmeni = await  $('[name="name"][type="text"]');
         const fldEmail = await  $('[name="email"][type="email"]');
         const fldHeslo = await  $('[name="password"][type="password"]');
