@@ -70,5 +70,7 @@ describe('Applications Page', async () => {
             const cols = await row.$$('td');
             await expect(cols[0]).toHaveTextContaining(searchText, { ignoreCase: true });
         }
+
+        
     });
 });

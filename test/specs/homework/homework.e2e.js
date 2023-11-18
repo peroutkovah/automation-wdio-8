@@ -5,7 +5,7 @@ describe('Homework registration age', async () => {
         // sem vypracuj domácí úkol
         await browser.reloadSession();
         await browser.url('/registrace'); 
-        await browser.saveScreenshot('.homework1.png');
+        await browser.saveScreenshot('./screenshots/homework1.png');
 
     });
 

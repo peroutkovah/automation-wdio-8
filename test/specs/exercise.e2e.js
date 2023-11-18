@@ -171,7 +171,7 @@ describe('Czechitas Login Page', async () => {
         });
 */
 /**********LEKCE 5 **********/
-
+/*
 describe('Login Page', async () => {
 
     beforeEach(async () => {
@@ -290,8 +290,13 @@ describe('Applications Page', async () => {
     });
 });
 
+*/
+
+/* Lekce 6 je zapsana do dvou js - login a applications...*/
 
 
 //sipka nahoru dolu mi ukaze v cmd posledni napsane prikazy
 // pokud chci testy zapisovat do logu: npm run wdio > test1.log
 // pokud chci testy jak do okna tak i do logu: npm run wdio 2>&1 | tee test2.log
+
+

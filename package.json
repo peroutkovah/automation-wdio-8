@@ -14,7 +14,7 @@
     "@wdio/selenium-standalone-service": "^8.15.0",
     "@wdio/spec-reporter": "^8.16.17",
     "allure-commandline": "^2.24.0",
-    "chromedriver": "^117.0.3",
+    "chromedriver": "^119.0.1",
     "deepmerge": "^4.3.1",
     "fs": "^0.0.1-security",
     "geckodriver": "^4.2.1",
@@ -28,7 +28,7 @@
     "wdio-video-reporter": "^4.0.5"
   },
   "scripts": {
-    "wdio": "wdio run wdio.conf.js",
+    "wdio": "wdio run ./wdio.conf.js",
     "wdio-docker": "wdio run wdio.docker.conf.js",
     "wdio-hooks": "wdio run test/specs/examples/lesson-06/wdio.hooks.conf.js",
     "wdio-allure": "wdio run test/specs/examples/lesson-06/wdio.allure.conf.js",
