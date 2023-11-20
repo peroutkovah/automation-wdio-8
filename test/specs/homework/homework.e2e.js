@@ -1,15 +1,15 @@
-describe('Homework registration age', async () => {
+describe('Homework registration page', async () => {
 
     beforeEach(async () => {
 
         // sem vypracuj domácí úkol
         await browser.reloadSession();
         await browser.url('/registrace'); 
-        await browser.saveScreenshot('./screenshots/homework1.png');
+        await browser.saveScreenshot('./homework1.png');
 
     });
 
-    xit('check if registration page have all components', async () => {
+    it('check if registration page have all components', async () => {
 
         // ●	Políčko pro jméno a příjmení
         console.log('Tady je Políčko pro jméno a příjmení');
@@ -50,7 +50,7 @@ describe('Homework registration age', async () => {
         const btnRegistrace = await  $('[type="submit"].btn');
 
          fldJmenoPrijmeni.setValue('Hana Poseroutkova');
-         fldEmail.setValue('abcdefghij@centrum.cz');
+         fldEmail.setValue('abcdefghijklm@centrum.cz');
          fldHeslo.setValue('Eproutka1');
          fldHesloPotvrzeni.setValue('Eproutka1');
 
@@ -66,7 +66,7 @@ describe('Homework registration age', async () => {
     });  
 
 
-    xit('should make invalid registration for already existing user', async () => {       
+    it('should make invalid registration for already existing user', async () => {       
         const fldJmenoPrijmeni = await  $('[name="name"][type="text"]');
         const fldEmail = await  $('[name="email"][type="email"]');
         const fldHeslo = await  $('[name="password"][type="password"]');
@@ -74,12 +74,14 @@ describe('Homework registration age', async () => {
         const btnRegistrace = await  $('[type="submit"].btn')
 
          fldJmenoPrijmeni.setValue('Hana Poseroutkova');
-         fldEmail.setValue('hhh@centrum.cz');
+         fldEmail.setValue('abcdefghijk@centrum.cz');
          fldHeslo.setValue('Eproutka1');
          fldHesloPotvrzeni.setValue('Eproutka1');
-         await btnRegistrace.click();
 
-         await browser.pause(500);
+         await browser.pause(1000);
+         await $('.invalid-feedback').waitForDisplayed({ reverse: true});
+
+         await btnRegistrace.click();
 
         const invalidMSg = await $$('.invalid-feedback');
         console.log('Na stránce existuje ' + invalidMSg.length + ' špatných feedbacků.');
@@ -89,7 +91,7 @@ describe('Homework registration age', async () => {
        }); 
     }); 
 
-    xit('should make invalid registration because of nonadequete psw', async () => {       
+    it('should make invalid registration because of nonadequete psw', async () => {       
         const fldJmenoPrijmeni = await  $('[name="name"][type="text"]');
         const fldEmail = await  $('[name="email"][type="email"]');
         const fldHeslo = await  $('[name="password"][type="password"]');
@@ -100,9 +102,11 @@ describe('Homework registration age', async () => {
          fldEmail.setValue('abcedefghijk@centrum.cz');
          fldHeslo.setValue('111111111111');
          fldHesloPotvrzeni.setValue('111111111111');
-         await btnRegistrace.click();
+         
+         await browser.pause(1000);
+         await $('.invalid-feedback').waitForDisplayed({ reverse: true});
 
-         await browser.pause(500);
+        await btnRegistrace.click();
 
         const invalidMSg = await $$('.invalid-feedback');
         console.log('Na stránce existuje ' + invalidMSg.length + ' špatných feedbacků.');
