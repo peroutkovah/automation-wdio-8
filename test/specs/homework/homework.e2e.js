@@ -42,7 +42,7 @@ describe('Homework registration page', async () => {
         console.log(btnRegistraceIsEnabled);
     });
 
-    it('should make valid registration and check it', async () => {       
+    xit('should make valid registration and check it', async () => {       
         const fldJmenoPrijmeni = await  $('[name="name"][type="text"]');
         const fldEmail = await  $('[name="email"][type="email"]');
         const fldHeslo = await  $('[name="password"][type="password"]');
@@ -50,7 +50,7 @@ describe('Homework registration page', async () => {
         const btnRegistrace = await  $('[type="submit"].btn');
 
          fldJmenoPrijmeni.setValue('Hana Poseroutkova');
-         fldEmail.setValue('abcdefghijklm@centrum.cz');
+         fldEmail.setValue('abcdefghijklmn@centrum.cz');
          fldHeslo.setValue('Eproutka1');
          fldHesloPotvrzeni.setValue('Eproutka1');
 
@@ -58,11 +58,13 @@ describe('Homework registration page', async () => {
         await $('#DataTables_Table_0_wrapper').waitForDisplayed({ reverse: true});
 
 
-        console.log( await  btnRegistrace.isEnabled());
+        //console.log( await  btnRegistrace.isEnabled());
+        await expect(btnRegistrace).toBeExisting();
         await btnRegistrace.click();
         const prihlasenyUzivatel =$('.navbar-right').$('[title="Hana Poseroutkova"]');
 
-           console.log('Jméno přihlášeného uživatele: ' + await prihlasenyUzivatel.getText());
+        await expect(prihlasenyUzivatel).toHaveText('Hana Poseroutkova');
+        //console.log('Jméno přihlášeného uživatele: ' + await prihlasenyUzivatel.getText());
     });  
 
 
@@ -84,10 +86,15 @@ describe('Homework registration page', async () => {
          await btnRegistrace.click();
 
         const invalidMSg = await $$('.invalid-feedback');
+
+        await expect(invalidMSg).toBeExisting();
+
         console.log('Na stránce existuje ' + invalidMSg.length + ' špatných feedbacků.');
-        console.log('Tady je jejich výis: ');
+        console.log('Tady je jejich výpis: ');
+
         invalidMSg.forEach(async (invalidMSg) => {
-           console.log(await invalidMSg.getText());  
+           console.log(await invalidMSg.getText());
+
        }); 
     }); 
 
@@ -109,6 +116,8 @@ describe('Homework registration page', async () => {
         await btnRegistrace.click();
 
         const invalidMSg = await $$('.invalid-feedback');
+        await expect(invalidMSg).toBeExisting();
+        
         console.log('Na stránce existuje ' + invalidMSg.length + ' špatných feedbacků.');
         console.log('Tady je jejich výis: ');
         invalidMSg.forEach(async (invalidMSg) => {

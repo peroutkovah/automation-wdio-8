@@ -28,3 +28,5 @@ například po spuštětní příkladů lekce 1:
 ```shell
 npm run wdio -- --suite lesson_01
 ```
+
+## Zoom passcode: 874321
