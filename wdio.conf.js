@@ -1,16 +1,10 @@
 import fs from 'fs';
-const passedDirectory = 'screenshots/passed';
-const failedDirectory = 'screenshots/failed';
-function createIfNotExists(dir) {
-    if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true });
-    }
-}
-function deleteFiles(dir) {
-    fs.rm(dir, { recursive: true }, err => {
-        if (err) console.log(err);
-    });
-}
+import allure from 'allure-commandline';
+import video from 'wdio-video-reporter';
+
+const allureTmpDirectory = './.tmp/allure';
+const allureReportDirectory = './reports/allure';
+
 export const config = {
     // automationProtocol: 'devtools',
     runner: 'local',
@@ -75,25 +69,47 @@ export const config = {
         'geckodriver'
     ],
     framework: 'mocha',
-    reporters: ['spec'],
+   /*
+    Konfigurace reportování
+     */
+    reporters: [
+        'spec',
+        [video, {
+            outputDir: allureTmpDirectory,
+            saveAllVideos: true,        // If true, also saves videos for successful test cases
+            videoSlowdownMultiplier: 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
+        }],
+        ['allure', {
+            outputDir: allureTmpDirectory,
+            disableWebdriverStepsReporting: true,
+            disableWebdriverScreenshotsReporting: true,
+            addConsoleLogs: true,
+        }]
+    ],
     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
     },
-    /*
+     /*
     Definice potřebných hooků
     */
     onPrepare: (config, capabilities) => {
-        deleteFiles("screenshots");
+        // remove previous tmp files
+        fs.rmdir(allureTmpDirectory, { recursive: true }, err => {
+            if (err) console.log(err);
+        });
     },
-    afterTest: (test, context, { error, result, duration, passed, retries }) => {
-        const screenshotName = (`${test.parent}__${test.title}.png`).replace(/ /g, '_');
-        if (passed === true) {
-            createIfNotExists(passedDirectory);
-            browser.saveScreenshot( `${passedDirectory}/${screenshotName}`);
-        } else {
-            createIfNotExists(failedDirectory);
-            browser.saveScreenshot(`${failedDirectory}/${screenshotName}`);
-        }
+    onComplete: () => {
+        const reportError = new Error('Could not generate Allure report')
+        const generation = allure(['generate', '--clean', allureTmpDirectory, '--output', allureReportDirectory]);
+        return new Promise((resolve, reject) => {
+            const generationTimeout = setTimeout(() => reject(reportError), 5000);
+            generation.on('exit', function(exitCode) {
+                clearTimeout(generationTimeout);
+                if (exitCode !== 0) return reject(reportError);
+                console.log('Allure report successfully generated');
+                resolve()
+            });
+        });
     }
 }

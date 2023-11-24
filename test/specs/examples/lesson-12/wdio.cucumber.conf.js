@@ -1,5 +1,5 @@
 import deepmerge from 'deepmerge';
-import {config as baseConfig} from '../../../../wdio.conf.js';
+import {config as baseConfig} from '../../../../x_html_reports______wdio.conf.js';
 
 export const config = deepmerge(baseConfig, {
     // logLevel: 'trace',

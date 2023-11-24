@@ -42,7 +42,7 @@ describe('Homework registration page', async () => {
         console.log(btnRegistraceIsEnabled);
     });
 
-    xit('should make valid registration and check it', async () => {       
+    it('should make valid registration and check it', async () => {       
         const fldJmenoPrijmeni = await  $('[name="name"][type="text"]');
         const fldEmail = await  $('[name="email"][type="email"]');
         const fldHeslo = await  $('[name="password"][type="password"]');
@@ -63,7 +63,7 @@ describe('Homework registration page', async () => {
         await btnRegistrace.click();
         const prihlasenyUzivatel =$('.navbar-right').$('[title="Hana Poseroutkova"]');
 
-        await expect(prihlasenyUzivatel).toHaveText('Hana Poseroutkova');
+        await expect(prihlasenyUzivatel).toHaveText('Hana Poseroutkova', { message: 'Jmeno prihlaseneho uzivatele je blbe!' });
         //console.log('Jméno přihlášeného uživatele: ' + await prihlasenyUzivatel.getText());
     });  
 
@@ -87,7 +87,7 @@ describe('Homework registration page', async () => {
 
         const invalidMSg = await $$('.invalid-feedback');
 
-        await expect(invalidMSg).toBeExisting();
+        await expect(invalidMSg).toBeExisting( { message: 'Neobjevila se hlaska o jiz existujicim uzivateli!' });
 
         console.log('Na stránce existuje ' + invalidMSg.length + ' špatných feedbacků.');
         console.log('Tady je jejich výpis: ');
@@ -116,10 +116,10 @@ describe('Homework registration page', async () => {
         await btnRegistrace.click();
 
         const invalidMSg = await $$('.invalid-feedback');
-        await expect(invalidMSg).toBeExisting();
+        await expect(invalidMSg).toBeExisting({ message: 'Neobjevila se hlaska o spatne zvolenenm heslu!' });
         
         console.log('Na stránce existuje ' + invalidMSg.length + ' špatných feedbacků.');
-        console.log('Tady je jejich výis: ');
+        console.log('Tady je jejich výpis: ');
         invalidMSg.forEach(async (invalidMSg) => {
            console.log(await invalidMSg.getText());  
        }); 
