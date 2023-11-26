@@ -74,22 +74,23 @@ export const config = {
      */
     reporters: [
         'spec',
-        [video, {
+        ['video', {
             outputDir: allureTmpDirectory,
             saveAllVideos: true,        // If true, also saves videos for successful test cases
             videoSlowdownMultiplier: 3, // Higher to get slower videos, lower for faster videos [Value 1-100]
         }],
         ['allure', {
             outputDir: allureTmpDirectory,
+            disableMochaHooks: true,
             disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: true,
             addConsoleLogs: true,
         }]
     ],
-    mochaOpts: {
+     mochaOpts: {
         ui: 'bdd',
         timeout: 60000
-    },
+    }, 
      /*
     Definice potřebných hooků
     */
