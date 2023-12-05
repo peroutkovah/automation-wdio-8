@@ -107,7 +107,6 @@ describe('Homework registration page', async () => {
         //console.log('Jméno přihlášeného uživatele: ' + await prihlasenyUzivatel.getText());
     });  
 
-
     it('should make invalid registration for already existing user', async () => {       
         const fldJmenoPrijmeni = await  getFldJmenoPrijmeni();
         const fldEmail = await   getFldEmail();
