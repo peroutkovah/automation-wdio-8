@@ -1,4 +1,5 @@
 import RegistrationPage from '../pages/homework.page.js'
+import {getRandomEmail} from '../../fixtures.js'
 
 describe('Homework registration page', async () => {
 
@@ -33,7 +34,7 @@ describe('Homework registration page', async () => {
     it('should make valid registration and check it', async () => {       
 
         RegistrationPage.fldJmenoPrijmeni.setValue('Hana Poseroutkova');
-        RegistrationPage.fldEmail.setValue('aabcdefghijklmno@centrum.cz');
+        RegistrationPage.fldEmail.setValue(getRandomEmail());
         RegistrationPage.fldHeslo.setValue('Eproutka1');
         RegistrationPage.fldHesloPotvrzeni.setValue('Eproutka1');
 
@@ -50,7 +51,7 @@ describe('Homework registration page', async () => {
     it('should make invalid registration for already existing user', async () => {       
 
         RegistrationPage.fldJmenoPrijmeni.setValue('Hana Poseroutkova');
-        RegistrationPage.fldEmail.setValue('abcdefghijk@centrum.cz');
+        RegistrationPage.fldEmail.setValue('aaab@centrum.cz');
         RegistrationPage.fldHeslo.setValue('Eproutka1');
         RegistrationPage.fldHesloPotvrzeni.setValue('Eproutka1');
 
