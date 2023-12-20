@@ -1,8 +1,9 @@
 /**
- * Lekce7: login
+ * Lekce9: login
  */
 import {username, password, userFullName} from '../../../fixtures.js'
 import LoginPage from '../pages/login.page.js'
+
 
 describe('Login Page', async () => {
 

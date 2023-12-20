@@ -1,7 +1,7 @@
 /**
  * Lekce 7: Aplikace
  */
-import {username, password, userFullName, expectedApplicationsPageRows} from '../../fixtures.js'
+import {username, password, expectedApplicationsPageRows} from '../../../fixtures.js'
 import LoginPage from '../pages/login.page.js'
 import ApplicationsPage from '../pages/applications.page.js'
 
@@ -15,21 +15,21 @@ describe('Applications Page', async () => {
         await browser.pause(1000);
     });
 
-    it('should list all applications', async () => {
-        const rows = ApplicationsPage.getTableRows();
+    it.only('should list all applications', async () => {
+        const rows = await ApplicationsPage.getTableRows();
 
         await expect(await $('h1')).toHaveText('Přihlášky');
         await expect(rows.length).toEqual(expectedApplicationsPageRows);
+        
+        console.log(rows);
 
         for (const row of rows) {
-            console.log(await row.getText());
-            const cols = await row.$$('td');
-            await expect(cols[0]).toHaveText(/^(?!\s*$).+/);
-            await expect(cols[1]).toHaveText(/(\d{2}.\d{2}.\d{4}|\d{2}.\d{2}. - \d{2}.\d{2}.\d{4})/);
-            await expect(cols[2]).toHaveText(/(Bankovní převod|FKSP|Hotově|Složenka)/);
-            // nebo
-            await expect(cols[2]).toHaveText(['Bankovní převod', 'FKSP', 'Hotově', 'Složenka']);
-            await expect(cols[3]).toHaveText(/\d{1,3}(| \d{0,3}) Kč/);
+         
+        await expect(row.name).toMatch(/^(?!\s*$).+/);
+        await expect(row.date).toMatch(/(\d{2}.\d{2}.\d{4}|\d{2}.\d{2}. - \d{2}.\d{2}.\d{4})/);
+        //await expect(row.paymentType).toHaveTextContaining(['Bankovní převod', 'FKSP', 'Hotově', 'Složenka']);
+        await expect(['Bankovní převod', 'FKSP', 'Hotově', 'Složenka'].includes(row.paymentType)).toBeTruthy();
+        await expect(row.remainsToPay).toMatch(/\d{1,3}(| \d{0,3}) Kč/); 
         }
     });
 
@@ -49,7 +49,7 @@ describe('Applications Page', async () => {
         for (const row of filteredRows) {
             console.log(await row.getText());
             const cols = await row.$$('td');
-            await expect(cols[0]).toHaveTextContaining(searchText, { ignoreCase: true });
+            await expect(row.name).toEqual(searchText, { ignoreCase: true });
         }
     });
 });

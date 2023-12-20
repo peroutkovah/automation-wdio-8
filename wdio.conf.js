@@ -35,6 +35,8 @@ export const config = {
         lekce5: ['./test/specs/break_out_room/lekce5/**/*.e2e.js'],
         lekce7: ['./test/specs/break_out_room/lekce7/**/*.e2e.js'],
         lekce8: ['./test/specs/break_out_room/lekce8/**/*.e2e.js'],
+        lekce9: ['./test/specs/break_out_room/lekce9/**/*.e2e.js'],
+        lekce11: ['./test/specs/break_out_room/lekce11/**/*.e2e.js'],
     },
     maxInstances: 10,
     capabilities: [{

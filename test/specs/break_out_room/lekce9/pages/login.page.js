@@ -1,6 +1,9 @@
-class LoginPage {
+import AppPage from './app.page.js';
+
+class LoginPage extends AppPage {
 
     constructor() {
+        super();
         this.url = '/prihlaseni';
     }
  
@@ -9,11 +12,7 @@ class LoginPage {
     get emailField() { return $('#email'); }
     get passwordField() { return $('#password'); }
     get loginButton () {return $('.btn-primary'); }
-    get navbarRight() {return $('.navbar-right'); }
-    get userNameDropdown() { return this.navbarRight.$('[data-toggle="dropdown"]'); }
-    get toastMessage() {return $('.toast-message'); }
     get fieldError() {return $('.invalid-feedback'); } 
-    get logoutLink() {return $('#logout-link'); }
     
     //funkce pro otevreni stranky
     async openLoginPage() {
@@ -26,15 +25,7 @@ class LoginPage {
         await this.passwordField.setValue(password);
         await this.loginButton.click(); 
     }
- 
-    async logOut() {
-        await this.userNameDropdown.click();
-        await this.logoutLink.click();
-    }
- 
-    async getCurrentUser() {
-        return await this.userNameDropdown.getText();
-    }
+    
  }
  
  export default new LoginPage();
