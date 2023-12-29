@@ -1,4 +1,4 @@
-import RegistrationPage from '../pages/homework.page.js'
+import RegistrationPage from '../pages/registration.page.js'
 import {getRandomEmail} from '../../fixtures.js'
 
 describe('Homework registration page', async () => {

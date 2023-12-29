@@ -15,7 +15,7 @@ describe('Applications Page', async () => {
         await browser.pause(1000);
     });
 
-    it.only('should list all applications', async () => {
+    it('should list all applications', async () => {
         const rows = await ApplicationsPage.getTableRows();
 
         await expect(await $('h1')).toHaveText('Přihlášky');
@@ -47,8 +47,8 @@ describe('Applications Page', async () => {
         await expect(filteredRowsCount).toBeLessThanOrEqual(unfilteredRowsCount);
 
         for (const row of filteredRows) {
-            console.log(await row.getText());
-            const cols = await row.$$('td');
+         /*    console.log(await row.getText());
+            const cols = await row.$$('td'); */
             await expect(row.name).toEqual(searchText, { ignoreCase: true });
         }
     });
